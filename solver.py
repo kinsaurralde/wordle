@@ -155,7 +155,7 @@ class Solver:
         self.points = multiprocessing.Manager().dict()
         self.done_count = multiprocessing.Manager().Value('i', 0)
 
-        answers_list = self.answers.getList()[:500]
+        answers_list = self.answers.getList()[:5]
         self.answers_count = len(answers_list)
         proccess_count = multiprocessing.cpu_count()
         pool = multiprocessing.Pool(proccess_count)
@@ -165,7 +165,7 @@ class Solver:
         print(f"Completed in {int((end_time - start_time) * 1000) / 1000} seconds")
         
         best = max(self.points.items(), key=lambda x:x[1])
-        print(f"{best} with {self.points[best]} wins")
+        print(f"{best} wins")
 
         return self.points
             
